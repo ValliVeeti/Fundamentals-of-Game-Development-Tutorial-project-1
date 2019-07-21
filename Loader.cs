@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Loader : MonoBehaviour
 {
+//Loads the game
     public GameObject gameManager;
     // Start is called before the first frame update
     void Awake()
