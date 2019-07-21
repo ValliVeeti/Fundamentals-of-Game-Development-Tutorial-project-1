@@ -33,6 +33,7 @@ public class Player : MovingObject
     }
     private void OnDisable()
     {
+    //Saves the food amount to an outside variable between levels
         GameManager.instance.playerFoodPoints = food;
     }
     protected override void AttemptMove<T>(int xDir, int yDir)
@@ -101,6 +102,7 @@ public class Player : MovingObject
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+    //Handles the interactions between the consumables and the exit
         if(other.tag == "Exit")
         {
             
