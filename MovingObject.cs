@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public abstract class MovingObject : MonoBehaviour {
-
+//Works as the basis for the movement of the enemies and the player
     public float moveTime = 0.1f;
     public LayerMask blockingLayer;
 
