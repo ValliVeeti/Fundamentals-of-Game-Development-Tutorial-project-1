@@ -37,6 +37,7 @@ using Random = UnityEngine.Random;
 
         void InitialiseList()
         {
+        //Creates the list for tiles on the gamefloor
             gridPositions.Clear();
 
             for (int x = 1; x < columns - 1; x++)
@@ -49,6 +50,7 @@ using Random = UnityEngine.Random;
         }
         void BoardSetup()
         {
+        //Creates the game board
             boardHolder = new GameObject("Board").transform;
             for (int x = -1; x < columns + 1; x++)
             {
@@ -67,6 +69,7 @@ using Random = UnityEngine.Random;
         }
         Vector3 RandomPosition()
         {
+        //Used for getting a random position from the board
             int randomIndex = Random.Range(0, gridPositions.Count);
             Vector3 randomPosition = gridPositions[randomIndex];
             gridPositions.RemoveAt(randomIndex);
@@ -75,6 +78,7 @@ using Random = UnityEngine.Random;
 
         void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
         {
+        //Places an object to the random position
             int objectCount = Random.Range(minimum, maximum + 1);
             for (int i = 0; i < objectCount; i++)
             {
@@ -86,6 +90,7 @@ using Random = UnityEngine.Random;
         }
         public void SetupScene(int level)
         {
+        //Runs the above functions
             BoardSetup();
             InitialiseList();
             LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
@@ -96,7 +101,7 @@ using Random = UnityEngine.Random;
 
         }
 
-        // Start is called before the first frame update
+
 
     }
 
