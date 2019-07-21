@@ -13,16 +13,18 @@ public class Enemy : MovingObject
     // Start is called before the first frame update
     protected override void Start()
     {
+    //Gets components and determines the location of the player
         GameManager.instance.AddEnemyToList(this);
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
     }
 
-    // Update is called once per frame
+
 
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
+    //Attempts to move the enemy, skipping every second turn
         if (skipMove)
         {
             skipMove = false;
@@ -35,6 +37,7 @@ public class Enemy : MovingObject
     }
     public void MoveEnemy()
     {
+    //Moves the enemy
         int xDir = 0;
         int yDir = 0;
 
@@ -48,6 +51,7 @@ public class Enemy : MovingObject
     }
     protected override void OnCantMove<T>(T component)
     {
+    //Is called if the enemy can't move to the wanted space
         Player hitPlayer = component as Player;
         hitPlayer.LoseFood(playerDamage);
         animator.SetTrigger("Enemy1Chop");
