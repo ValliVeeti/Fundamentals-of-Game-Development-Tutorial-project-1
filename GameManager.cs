@@ -19,14 +19,15 @@ public class GameManager : MonoBehaviour
     private GameObject levelImage;
     private bool doingSetup;
     private bool firstRun = true;
-    // Start is called before the first frame update
+
     void Awake()
     {
+    //Checks if other gamemanagers exist as not to run several games at the same time
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-
+    //Creates required components for the board setup
         DontDestroyOnLoad(gameObject);
         enemies = new List<Enemy>();
         boardScript = GetComponent<BoardManager>();
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     }
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+    //Advances the game between levels
         if (firstRun)
         {
             firstRun = false;
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
     }
     void InitGame()
     {
+    //Does the setup of the game 
         doingSetup = true;
 
         levelImage = GameObject.Find("LevelImage");
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    //Manages players and enemies turns
         if (playersTurn || enemiesMoving || doingSetup)
             return;
         StartCoroutine(MoveEnemies());
